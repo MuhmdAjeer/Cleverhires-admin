@@ -127,3 +127,12 @@
     filter: invert(1);
   }
 }
+
+.home{
+  display: flex;
+}
+.home_container{
+  background-color: rgb(255, 255, 255);
+  flex : 6;
+}
+
