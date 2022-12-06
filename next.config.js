@@ -15,6 +15,6 @@
 
 module.exports =  {
   images: {
-      domains: ["images.pexels.com", "dog.ceo"]
+      domains: ["images.pexels.com", "dog.ceo","cleverehires.s3.amazonaws.com"]
   },
 }

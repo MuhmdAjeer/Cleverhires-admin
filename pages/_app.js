@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import { QueryClient,QueryClientProvider } from 'react-query'
 import Toaster from '../components/sidebar/Toaster'
 

@@ -2,6 +2,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/system';
 import {useRouter} from 'next/router'
 import { useRestrict, useUsers } from '../../../hooks/user';
+import Image from 'next/image';
 
 
 const UserTable = () => {
@@ -16,25 +17,32 @@ const UserTable = () => {
       width: 50,
     },
     {
+      field : 'profileImage',
+      headerName : 'Image',
+      renderCell : ({row})=>(
+        <Image style={{borderRadius:'50%'}} width={40} height={40} src={row.profileImage} />
+      )
+    },
+    {
       field: 'firstName',
       headerName: 'First name',
-      width: 250,
+      width: 200,
     },
     {
       field: 'lastName',
       headerName: 'Last name',
-      width: 250,
+      width: 200,
     },
     {
       field: 'username',
       headerName: 'Username name',
       sortable: false,
-      width: 250
+      width: 200
     },
     {
       field : 'email',
       headerName : 'Email',
-      width : 250
+      width : 200
     },
     {
       field : 'phone',
@@ -46,10 +54,9 @@ const UserTable = () => {
       headerName: 'Options',
       width: 260,
       renderCell: ({row}) => (
-        row.blocked ? 
-        <button className='block_btn' onClick={()=>restrict(row.id)} >Unblock</button>
-        :
-        <button className='unblock_btn' onClick={()=> restrict(row.id)}>Block</button>
+        <button onClick={()=>restrict(row.id)}  className={row.blocked ? 'block_btn' : 'unblock_btn'} >
+        {row.blocked ? 'Unblock' : 'Block'}
+      </button>
       )
     },
   
