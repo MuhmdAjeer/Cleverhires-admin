@@ -1,10 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/system';
-import { useMutation, useQuery , useQueryClient} from 'react-query';
-import axios from 'axios';
 import {useRouter} from 'next/router'
-import Link from 'next/link'
-import {toast} from 'react-hot-toast'
 import { useRestrict, useUsers } from '../../../hooks/user';
 
 
