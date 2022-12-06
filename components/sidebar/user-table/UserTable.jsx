@@ -1,75 +1,84 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/system';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery , useQueryClient} from 'react-query';
 import axios from 'axios';
 import {useRouter} from 'next/router'
-
-
-
-
-const columns = [
-  // { field: '_id', headerName: 'ID', width: 90 },
-  {
-    field: 'firstName',
-    headerName: 'First name',
-    width: 150,
-  },
-  {
-    field: 'lastName',
-    headerName: 'Last name',
-    width: 150,
-  },
-  {
-    field: 'username',
-    headerName: 'Usename name',
-    sortable: false,
-    width: 160,
-  },
-  {
-    field: 'Options',
-    headerName: 'Options',
-    width: 160,
-    renderCell: (value) => (
-      value.row.blocked ? 
-      <button>{value.row.blocked}</button>
-      :
-      <button>{value.row.blocked}</button>
-    )
-  },
-
-];
+import Link from 'next/link'
+import {toast} from 'react-hot-toast'
+import { useRestrict, useUsers } from '../../../hooks/user';
 
 
 const UserTable = () => {
+  const {mutate:restrict} = useRestrict()
+  const {data:users,isLoading,status} = useUsers()
+
+
+  const columns = [
+    {
+      field: 'index',
+      headerName: 'Id',
+      width: 50,
+    },
+    {
+      field: 'firstName',
+      headerName: 'First name',
+      width: 250,
+    },
+    {
+      field: 'lastName',
+      headerName: 'Last name',
+      width: 250,
+    },
+    {
+      field: 'username',
+      headerName: 'Username name',
+      sortable: false,
+      width: 250
+    },
+    {
+      field : 'email',
+      headerName : 'Email',
+      width : 250
+    },
+    {
+      field : 'phone',
+      headerName : 'Phone',
+      width : 250
+    },
+    {
+      field: 'Options',
+      headerName: 'Options',
+      width: 260,
+      renderCell: ({row}) => (
+        row.blocked ? 
+        <button className='block_btn' onClick={()=>restrict(row.id)} >Unblock</button>
+        :
+        <button className='unblock_btn' onClick={()=> restrict(row.id)}>Block</button>
+      )
+    },
+  
+  ];
   const router = useRouter()
-  const fetchUsers = async () => {
-    const { data } = await axios.get('http://localhost:5000/api/v1/user')
-    return data
-  }
-  const { data, isLoading, isError, refetch ,status} = useQuery('ALL_USERS', fetchUsers)
-  const row = data?.map((user)=>{
+  const row = users?.data.map((user,index)=>{
     return{
       id : user._id,
-      firstName : user.firstName,
-      lastName : user.lastName,
-      username : user.username,
+      index : index+1,
+      ...user
+      
     }
   })
-  console.log(data);
   return (
     <div style={{ margin: '25px' }} >
-      <button onClick={()=>router.push('/login')} >dd</button>
       <Box boxShadow={5} borderRadius={20} sx={{ height: 400, width: '100%' }}>
 
         {
-
           status === 'success' && 
           
                   <DataGrid
                     loading={isLoading}
                     autoHeight
                     style={{width:'auto'}}
-                    sx={{ textAlign:'center',borderRadius: '15px', boxShadow: '5px 5px 5px #fafafa' }}
+                    sx={{ textAlign:'center',borderRadius: '15px', boxShadow: '5px 5px 5px #fafafa' ,padding:'10px'}}
                     rows={row}
                     columns={columns}
                     // pageSize={5}

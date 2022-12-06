@@ -7,13 +7,15 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
+    <>
     <div className={styles.home} >
-      <Sidebar/>
+      <Sidebar active='users' />
       <div className={styles.home_container}>
       <Navbar/>
       <UserTable/>
       </div>
     </div>
+    </>
   )
 };
 

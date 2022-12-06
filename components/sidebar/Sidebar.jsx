@@ -15,7 +15,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 // import { DarkModeContext } from "../../context/darkModeContext";
 // import { useContext } from "react";
 
-const Sidebar = () => {
+const Sidebar = ({active}) => {
   // const { dispatch } = useContext(DarkModeContext);
   return (
     <div className={styles.sidebar}>

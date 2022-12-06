@@ -25,3 +25,25 @@ a {
     background: black;
   }
 }
+
+.block_btn{
+  background-color: rgb(37, 171, 37);
+  color: white;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  box-shadow: 0;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.unblock_btn{
+  background-color: rgb(255, 0, 0);
+  color: white;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  box-shadow: 0;
+  padding: 5px;
+  font-weight: bold;
+}
