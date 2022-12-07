@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import toast from "react-hot-toast";
-import { changeVisibility, getJobs } from "../api/jobs";
+import { changeVisibility, getHirerRequests, getJobs } from "../api/jobs";
 
 export const useJobs = () => useQuery("ALL_JOBS", getJobs);
 
@@ -16,3 +16,5 @@ export const useJobVisibility = () => {
     },
   });
 };
+
+export const useHirerRequests = () => useQuery('HIRER_REQUESTS',getHirerRequests)
