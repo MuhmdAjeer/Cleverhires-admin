@@ -1,6 +1,6 @@
 import Navbar from '../components/sidebar/Navbar/Navbar'
 import Sidebar from '../components/sidebar/Sidebar'
-import JobsTable from '../components/sidebar/jobs/JobsTable'
+import HirerRequests from '../components/sidebar/HirerRequests'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       <Sidebar active='jobs' />
       <div className={styles.home_container}>
       <Navbar/>
-      <JobsTable/>
+      <HirerRequests/>
       </div>
     </div>
     </>

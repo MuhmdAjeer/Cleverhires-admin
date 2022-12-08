@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import toast from "react-hot-toast";
-import { changeVisibility, getHirerRequests, getJobs } from "../api/jobs";
+import { approveHirer, changeVisibility, declineHirer, getHirerRequests, getJobs ,manageRequest } from "../api/jobs";
 
 export const useJobs = () => useQuery("ALL_JOBS", getJobs);
 
@@ -18,3 +18,30 @@ export const useJobVisibility = () => {
 };
 
 export const useHirerRequests = () => useQuery('HIRER_REQUESTS',getHirerRequests)
+
+export const useApproveHirer = () => {
+  const client = useQueryClient();
+  return useMutation(approveHirer, {
+    onSuccess : ()=>{
+      client.invalidateQueries('HIRER_REQUESTS');
+      toast.success("Successfully approved!");
+    },
+    onError : ()=>{
+      toast.error('approval failed!')
+    }
+  })
+}
+
+export const useDeclineHirer = () => {
+  const client = useQueryClient();
+  return useMutation(declineHirer, {
+    onSuccess : ()=>{
+      client.invalidateQueries('HIRER_REQUESTS');
+      toast.success("Declining successfull!");
+    },
+    onError : ()=>{
+      toast.error('Declining failed!')
+    }
+  })
+}
+

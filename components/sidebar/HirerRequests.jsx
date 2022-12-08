@@ -1,14 +1,14 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/system';
 import {useRouter} from 'next/router'
-import { useRestrict, useUsers } from '../../../hooks/user';
 import Image from 'next/image';
-import { useHirerRequests } from '../../hooks/jobs';
+import { useApproveHirer, useDeclineHirer, useHirerRequests } from '../../hooks/jobs';
 
 
 const UserTable = () => {
-//   const {mutate:restrict} = useRestrict()
   const {data:requests,isLoading,status} = useHirerRequests()
+  const {mutate:approve} = useApproveHirer()
+  const {mutate : decline} = useDeclineHirer()
 
 
   const columns = [
@@ -25,48 +25,47 @@ const UserTable = () => {
       )
     },
     {
-      field: 'firstName',
-      headerName: 'First name',
-      width: 200,
-    },
-    {
-      field: 'lastName',
-      headerName: 'Last name',
-      width: 200,
-    },
-    {
       field: 'username',
       headerName: 'Username name',
       sortable: false,
       width: 200
     },
     {
-      field : 'email',
-      headerName : 'Email',
+      field : 'company',
+      headerName : 'Company',
       width : 200
     },
     {
-      field : 'phone',
-      headerName : 'Phone',
+      field : 'country',
+      headerName : 'Country',
       width : 250
     },
     {
-      field: 'Options',
+      field : 'industry',
+      headerName : 'Industry',
+      width : 250
+    },
+    {
+      field: 'options',
       headerName: 'Options',
       width: 260,
       renderCell: ({row}) => (
-        <button onClick={()=>restrict(row.id)}  className={row.blocked ? 'block_btn' : 'unblock_btn'} >
-        {row.blocked ? 'Unblock' : 'Block'}
-      </button>
+        <>
+        <button style={{marginRight:'5px'}} className='block_btn' onClick={()=>approve(row.id)} >Approve</button>
+        <button className='unblock_btn' onClick={()=>decline(row.id)} >Deny</button>
+        </>
       )
     },
   
   ];
   const router = useRouter()
-  const row = users?.data.map((user,index)=>{
+  const row = requests?.data.map((user,index)=>{
     return{
       id : user._id,
       index : index+1,
+      company : user.hiring.company,
+      country : user.hiring.country,
+      industry : user.hiring.industry,
       ...user
       
     }

@@ -20,7 +20,7 @@ const UserTable = () => {
       field : 'profileImage',
       headerName : 'Image',
       renderCell : ({row})=>(
-        <Image style={{borderRadius:'50%'}} width={40} height={40} src={row.profileImage} />
+        <Image alt='user profile' style={{borderRadius:'50%'}} width={40} height={40} src={row.profileImage ? row.profileImage : '/avatar.png'} />
       )
     },
     {
