@@ -21,8 +21,8 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
   }
 }
 
@@ -57,4 +57,18 @@ a {
   &:hover{
     background-color:rgb(173, 0, 0) ;
   }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+.logo {
+    font-family: 'Alata', sans-serif;
+    color: #2274A5;
+    margin: 0;
+    margin-left: 25px;
+    margin-top: 0;
+}
+
+.signIn_header{
+  margin-bottom: 5px;
 }

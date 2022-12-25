@@ -1,0 +1,24 @@
+.signup_container{
+    margin: 10px;
+    padding: 25px;
+
+    /* height: f; */
+    width: 400px;
+    background-color: white;
+    color: #2274A5;
+
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    box-shadow: 0 0 5px 5px #00000009;
+    justify-content: center;
+    align-items: center;
+    /* border-color: red; */
+}
+
+.signin_page{
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+
+}
