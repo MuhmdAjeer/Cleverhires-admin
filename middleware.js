@@ -20,21 +20,26 @@
 //   }
 // }
 
+import { useRouter } from 'next/router';
 import { NextRequest, NextResponse } from 'next/server'
 import verify from './helpers/verify'
 
 export function middleware(req) {
   const { pathname } = req.nextUrl;
-	console.log('ajeer');
+	console.log({pathname});
   // check for authenticated routes
   // if (pathname === '<path-for-which-you-want-to-authenticate>') {
-    if (verify(req)) {
-  const url = req.nextUrl.clone()
-  url.pathname = '/jobs'
-  return NextResponse.redirect(url)
-   
-    }
+    if(pathname !== '/login'){
 
+      if (verify(req)) {
+        const url = req.nextUrl.clone()
+        url.pathname = '/login'
+        console.log(url);
+        return NextResponse.redirect(url)
+        
+      }
+    }
+      
   // }
 
   // if user is authenticated this will be called which continues the
