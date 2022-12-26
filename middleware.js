@@ -30,12 +30,11 @@ export function middleware(req) {
   // check for authenticated routes
   // if (pathname === '<path-for-which-you-want-to-authenticate>') {
     if(pathname !== '/login'){
-
       if (verify(req)) {
         const url = req.nextUrl.clone()
         url.pathname = '/login'
         console.log(url);
-        return NextResponse.redirect(url)
+        return NextResponse.rewrite(url)
         
       }
     }
