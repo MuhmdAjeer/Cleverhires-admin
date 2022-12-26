@@ -53,7 +53,7 @@ const Sidebar = ({active}) => {
           </li>
           </Link>
 
-          <li>
+          {/* <li>
             <NotificationsNoneIcon className={styles.icon} />
             <span>Notifications</span>
           </li>
@@ -66,7 +66,7 @@ const Sidebar = ({active}) => {
           <li>
             <AccountCircleOutlinedIcon className={styles.icon} />
             <span>Profile</span>
-          </li>
+          </li> */}
           <li onClick={logout} >
             <ExitToAppIcon className={styles.icon} />
             <span>Logout</span>
