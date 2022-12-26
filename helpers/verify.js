@@ -4,8 +4,9 @@ const TOKEN = 'token';
 
 const isRequestValid = async (req) => {
   const cookie = req.cookies.get('token')
-	console.log(cookie);
+	console.log({cookie});
   if (!cookie) {
+    console.log('ddddd');
     return false;
   }else{
     return true
