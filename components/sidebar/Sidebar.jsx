@@ -8,9 +8,15 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 
 import Link from "next/link";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 const Sidebar = ({active}) => {
-
+  const router = useRouter()
+  const logout = ()=>{
+    Cookies.remove('token')
+    router.push('/login')
+  }
   return (
     <div className={styles.sidebar}>
       <div className={styles.top}>
@@ -61,7 +67,7 @@ const Sidebar = ({active}) => {
             <AccountCircleOutlinedIcon className={styles.icon} />
             <span>Profile</span>
           </li>
-          <li>
+          <li onClick={logout} >
             <ExitToAppIcon className={styles.icon} />
             <span>Logout</span>
           </li>
