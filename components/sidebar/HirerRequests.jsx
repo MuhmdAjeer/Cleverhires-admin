@@ -11,7 +11,7 @@ const UserTable = () => {
   const {mutate : decline} = useDeclineHirer()
 
 
-  const columns = [
+  const columns = [    
     {
       field: 'index',
       headerName: 'Id',
