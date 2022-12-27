@@ -20,7 +20,7 @@ module.exports =  {
 generateEtags: false,
   headers: () => [
     {
-      source: '*',
+      source: '/path*',
       headers: [
         {
           key: 'Cache-Control',
