@@ -18,15 +18,4 @@ module.exports =  {
       domains: ["images.pexels.com", "dog.ceo","cleverehires.s3.amazonaws.com"]
   },
 generateEtags: false,
-  headers: () => [
-    {
-      source: '/path*',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'no-store',
-        },
-      ],
-    },
-  ],
 }
