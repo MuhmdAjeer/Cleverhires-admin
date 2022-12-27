@@ -17,9 +17,10 @@ module.exports =  {
   images: {
       domains: ["images.pexels.com", "dog.ceo","cleverehires.s3.amazonaws.com"]
   },
+generateEtags: false,
   headers: () => [
     {
-      source: '/:path*',
+      source: '*',
       headers: [
         {
           key: 'Cache-Control',
